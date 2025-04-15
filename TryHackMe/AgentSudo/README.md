@@ -1,7 +1,5 @@
 📝 CTF-Writeups/TryHackMe/AgentSudo/README.md
 
-Here’s a cleaned-up Markdown version of your "Agent Sudo" CTF write-up:
-
 # 🕵️ Agent Sudo - TryHackMe CTF Write-up
 
 **Date:** 02 March 2025  
@@ -58,8 +56,6 @@ Credentials Found:
     User: chris
 
     Password: crystal
-
-![Screenshot](./image.png)
 
 
 🗜️ Cracking Zip Files
