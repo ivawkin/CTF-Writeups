@@ -59,6 +59,9 @@ Credentials Found:
 
     Password: crystal
 
+![Screenshot](./image.png)
+
+
 🗜️ Cracking Zip Files
 Convert zip to hashes
 
