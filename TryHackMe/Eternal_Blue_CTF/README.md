@@ -80,6 +80,8 @@ getuid
 🛡️ 5. Escalate Privileges
 📋 View Running Services
 
+![Screenshot](Eternal_Blue_CTF/assets/assets.png)
+
 ps
 
     Look for services under NT AUTHORITY or similar with high privileges.
