@@ -80,7 +80,7 @@ getuid
 🛡️ 5. Escalate Privileges
 📋 View Running Services
 
-![Screenshot](assets/images.png)
+![scan](assets/image.png)
 
 ps
 
