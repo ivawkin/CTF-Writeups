@@ -36,14 +36,14 @@ Port	Service	Version	Findings
 🔑 Key Discoveries
 diff
 
-![screenshot](/assets/1.png/)
 
 + Found hidden shadow file in gum_room.jpg via steghide
 + SQL injection vulnerability using 'or 1=1 -- 
 + Command injection in home.php
 
-⚔️ Exploitation
+
 🚪 Initial Access
+
 python
 
 # PHP Reverse Shell
