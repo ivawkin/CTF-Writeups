@@ -86,12 +86,10 @@ Privilege Escalation	Sudo -l should be first command run
 Cryptography	Found keys might be useful later
 
 🧰 Full Command Cheatsheet
-<details> <summary>Click to expand</summary>
-bash
 
 # Nmap scan
 nmap -sV -sC -p- 10.10.109.203
-
+rustscan -a <ip> -- -A
 # Web directory brute-forcing
 feroxbuster -u http://10.10.109.203/ -w /usr/share/wordlists/seclists/Discovery/Web-Content/common.txt
 
