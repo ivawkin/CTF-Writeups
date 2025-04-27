@@ -12,7 +12,7 @@
 ## 🔍 Enumeration
 
 ### Rustscan + Nmap
-```bash
+
 rustscan -a agentsudo.thm
 
 nmap -sC -sV -oA agentsudo.thm
