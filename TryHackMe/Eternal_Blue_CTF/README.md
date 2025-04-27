@@ -8,7 +8,6 @@
 
 ### 🔎 Basic Service Scan
 
-```bash
 nmap -sV -Pn -vv 10.10.112.154
 
 🧨 Vulnerability Scan
