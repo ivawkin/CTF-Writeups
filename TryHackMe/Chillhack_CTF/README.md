@@ -149,7 +149,7 @@ If you're also just starting out, I hope this helps you or at least makes you fe
 
 ## 📸 Screenshot Proofs  
 
-I've added a few screenshots (see [screenshots folder](./screenshots/)) to document my progress if you want to follow along.
+I've added a few screenshots (see [screenshots folder](./assets/)) to document my progress if you want to follow along.
 
 ---
 
