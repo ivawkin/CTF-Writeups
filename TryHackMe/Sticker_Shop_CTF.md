@@ -12,8 +12,8 @@ READ THE FLAG  - flag.txt
 ### http://10.10.239.26:8080/flag.txt ###
 
 	1. Use nmap scan of nmap -A -F -oN nmapstickershop.txt target ip
-	
-	2.
+
+ 
 Use python3 -m http.server in terminal to listen and wait for response
 
 	3. Get chatgpt to help to create a script for cross site script. 
